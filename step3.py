@@ -13,10 +13,13 @@ def shorten_link(token, url):
 	body = {"long_url" : f"{url}"}
 
 	response = requests.post(bitly_url, headers=headers, json=body)
+	response.raise_for_status()
 	answer = response.json()
-	return(answer.get("id"))
+	return answer.get("id")
 
 token = "5980aab052614ad9cb069a667062873e38f81eda"
-url = "https://osu.ppy.sh/users/12782105"
 
-print('Битлинк', shorten_link(token, args.url))
+try:
+	print('Битлинк', shorten_link(token, args.url))
+except requests.exceptions.HTTPError:
+	print("Задана неверная ссылка")
