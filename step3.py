@@ -39,11 +39,14 @@ def count_clicks(token, url):
 	answer = response.json()
 	return answer.get("total_clicks")
 
+def main():
+	try:
+		if is_bitlink(args.url):
+			print('Количество кликов:', count_clicks(token, args.url))
+		else:
+			print('Битлинк', shorten_link(token, args.url))
+	except requests.exceptions.HTTPError:
+		print("Задана неверная ссылка")
 
-try:
-	if is_bitlink(args.url):
-		print('Количество кликов:', count_clicks(token, args.url))
-	else:
-		print('Битлинк', shorten_link(token, args.url))
-except requests.exceptions.HTTPError:
-	print("Задана неверная ссылка")
+if __name__ == '__main__':
+    main()
