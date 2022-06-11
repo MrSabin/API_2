@@ -5,7 +5,7 @@ import requests
 from dotenv import load_dotenv
 
 
-token = os.environ["TOKEN"]
+token = os.environ["BITLY_TOKEN"]
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-url', help='URL для сокращения')

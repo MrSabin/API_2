@@ -15,7 +15,7 @@ python -m pip install -r requirements.txt
 ## Running
 1. Create .env file in script directory, then put in your Bitly access token, like: 
 ```python
-TOKEN="your_token"
+BITLY_TOKEN="your_token"
 ```
 2. Run script with parameter `-url "your_url"`
 ```python
