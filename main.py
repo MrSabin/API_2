@@ -5,7 +5,6 @@ import requests
 from dotenv import load_dotenv
 
 
-load_dotenv()
 token = os.environ["TOKEN"]
 
 parser = argparse.ArgumentParser()
@@ -41,6 +40,7 @@ def count_clicks(token, url):
 
 
 def main():
+    load_dotenv()
     try:
         if is_bitlink(args.url):
             print('Количество кликов:', count_clicks(token, args.url))
