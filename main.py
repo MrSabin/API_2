@@ -6,7 +6,7 @@ import requests
 from dotenv import load_dotenv
 
 
-def is_bitlink(url):
+def is_bitlink(token, url):
     parsed = urllib.parse.urlparse(url)
     url = f"{parsed.netloc}{parsed.path}"
     bitly_url = f"https://api-ssl.bitly.com/v4/bitlinks/{url}"
@@ -46,7 +46,7 @@ def main():
     global token
     token = os.environ["BITLY_TOKEN"]
     try:
-        if is_bitlink(args.url):
+        if is_bitlink(token, args.url):
             print('Количество кликов:', count_clicks(token, args.url))
         else:
             print('Битлинк', shorten_link(token, args.url))
