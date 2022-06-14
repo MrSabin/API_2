@@ -41,9 +41,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-url', help='URL для сокращения')
     args = parser.parse_args()
-
     load_dotenv()
-    global token
     token = os.environ["BITLY_TOKEN"]
     try:
         if is_bitlink(token, args.url):
