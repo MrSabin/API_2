@@ -12,7 +12,7 @@ args = parser.parse_args()
 
 
 def is_bitlink(url):
-    parsed = urllib.parse.urlparse(args.url, scheme='', allow_fragments=True)
+    parsed = urllib.parse.urlparse(args.url)
     url = parsed.netloc + parsed.path
     bitly_url = f"https://api-ssl.bitly.com/v4/bitlinks/{url}"
     headers = {"Authorization": f"Bearer {token}"}
@@ -31,7 +31,7 @@ def shorten_link(token, url):
 
 
 def count_clicks(token, url):
-    parsed = urllib.parse.urlparse(url, scheme='', allow_fragments=True)
+    parsed = urllib.parse.urlparse(url)
     url = parsed.netloc + parsed.path
     bitly_url = f"https://api-ssl.bitly.com/v4/bitlinks/{url}/clicks/summary"
     headers = {"Authorization": f"Bearer {token}"}
